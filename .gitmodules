@@ -1,0 +1,3 @@
+[submodule "third_party/bytepicker"]
+	path = third_party/bytepicker
+	url = https://github.com/TeamDanganronpa/bytepicker
