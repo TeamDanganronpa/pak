@@ -30,7 +30,12 @@ void* OpenPAKRead(const char* FilePath) {
 }
 
 void DestroyPAKRead(void* Pak) {
-	if (Pak) DestroyPositionalFileReader(Pak);
+	if (!Pak) return;
+
+	PAKHandle* PakHandle = Pak;
+	if (PakHandle->PositionalFileReader) DestroyPositionalFileReader(PakHandle->PositionalFileReader);
+	if (PakHandle->Offsets) free(PakHandle->Offsets);
+	free(PakHandle);
 }
 
 uint32_t GetPAKOffsetsCount(void* Pak) {

@@ -40,6 +40,7 @@ void DestroyPAKWrite(void* Pak) {
 	PositionalFileWriter_SetPosition(PakWriteHandle->PositionalFileWriter, 4);
 	for (uint32_t i = 0; i < PakWriteHandle->OffsetsCount; ++i)
 		PositionalFileWriter_Write(PakWriteHandle->PositionalFileWriter, &PakWriteHandle->Offsets[i], 4);
+	free(PakWriteHandle->Offsets);
 }
 
 void PutPAKData(void* Pak, const void* Data, size_t DataSize) {
